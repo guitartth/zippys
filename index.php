@@ -1,4 +1,4 @@
-<?php require ('database.php'); ?>
+<?php require ('model/database.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@
 
 
 <?php 
-
+    
     $query = 'SELECT * from makes';
     $statement = $db->prepare($query);
     $statement->execute();
@@ -27,7 +27,7 @@
                 <?php foreach ($results as $result) : ?>
                 
                 <tr>
-                    <td><?php echo $result['make']; ?></td><br>
+                    <td><?php echo $result['Make']; ?></td><br>
                     <td><?php echo $result['make_id']; ?></td><br>
                 </tr>
 
