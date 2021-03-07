@@ -1,4 +1,4 @@
-
+<?php require ('model/database.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
