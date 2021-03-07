@@ -1,6 +1,6 @@
 <?php
     //HEROKU DATABASE CONNECTION
-    $dsn = 'mysql://qkdogx3kgq1cdzoz:z1b3pghf5lo5cao9@td5l74lo6615qq42.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/j9xaajjl1ma7nqmg';
+    $dsn = 'td5l74lo6615qq42.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
     $username = 'qkdogx3kgq1cdzoz';
     $password = 'z1b3pghf5lo5cao9';
 
