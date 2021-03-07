@@ -28,7 +28,7 @@
                 <?php foreach ($results as $result) : ?>
                 
                 <tr>
-                    <td><?php echo $result['make']; ?></td><br>
+                    <td><?php echo $result['Make']; ?></td><br>
                     <td><?php echo $result['make_id']; ?></td><br>
                 </tr>
 
