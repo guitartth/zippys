@@ -1,4 +1,4 @@
-<?php require ('model/database.php'); ?>
+<!--<?php require ('model/database.php'); ?>-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@
 </head>
 <body>
 
-
+<!--
 <?php 
     
     $query = 'SELECT * from makes';
@@ -20,10 +20,11 @@
     $statement->closeCursor();
     
     ?>
-
+-->
 <h2> Test </h2><br>
+                <!--
                 <section>
-                
+               
                 <?php foreach ($results as $result) : ?>
                 
                 <tr>
@@ -33,6 +34,6 @@
 
                 <?php endforeach; ?>
                 </section>
-    
+                -->
 </body>
 </html>
