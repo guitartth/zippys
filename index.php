@@ -1,4 +1,4 @@
-<!--<?php require ('model/database.php'); ?>-->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,30 +10,6 @@
 </head>
 <body>
 
-<!--
-<?php 
-    
-    $query = 'SELECT * from makes';
-    $statement = $db->prepare($query);
-    $statement->execute();
-    $results = $statement->fetchAll();
-    $statement->closeCursor();
-    
-    ?>
--->
-<h2> Test </h2><br>
-                <!--
-                <section>
-               
-                <?php foreach ($results as $result) : ?>
-                
-                <tr>
-                    <td><?php echo $result['Make']; ?></td><br>
-                    <td><?php echo $result['make_id']; ?></td><br>
-                </tr>
-
-                <?php endforeach; ?>
-                </section>
-                -->
+<h1>TESTING</h1>
 </body>
 </html>
