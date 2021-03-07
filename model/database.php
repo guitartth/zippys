@@ -4,8 +4,8 @@
     //$database = 'j9xaajjl1ma7nqmg';
     //$host = 'lyn7gfxo996yjjco.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
     //$dbName = 'j4ja3drkko4xna1i';
-    $username = 'qkdogx3kgq1cdzoz';
-    $password = 'z1b3pghf5lo5cao9';
+    $username = 'owzs8em1up7zunda';
+    $password = 'p6hsseoock6gyigv';
 
 
     try {
