@@ -11,5 +11,28 @@
 <body>
 
 <h1>TESTING Connection</h1>
+
+<?php 
+
+    $query = 'SELECT * from makes';
+    $statement = $db->prepare($query);
+    $statement->execute();
+    $results = $statement->fetchAll();
+    $statement->closeCursor();
+    
+    ?>
+
+<h2> Test </h2><br>
+                <section>
+                
+                <?php foreach ($results as $result) : ?>
+                
+                <tr>
+                    <td><?php echo $result['make']; ?></td><br>
+                    <td><?php echo $result['make_id']; ?></td><br>
+                </tr>
+
+                <?php endforeach; ?>
+                </section>
 </body>
 </html>
