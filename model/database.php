@@ -1,13 +1,13 @@
 <?php
     //HEROKU DATABASE CONNECTION
     $dsn = 'td5l74lo6615qq42.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
-    $database = 'j9xaajjl1ma7nqmg';
+    //$database = 'j9xaajjl1ma7nqmg';
     $username = 'qkdogx3kgq1cdzoz';
     $password = 'z1b3pghf5lo5cao9';
 
 
     try {
-        $db = new PDO($dsn, $database, $username, $password);
+        $db = new PDO($dsn, $username, $password);
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
         echo $error_message;
