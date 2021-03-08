@@ -40,25 +40,58 @@ if(!$action)
     $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
     if(!$action)
     {
-        $action = 'list_all';
+        $action = 'default';
     }
+}
+
+
+$order = filter_input(INPUT_POST, 'order', FILTER_SANITIZE_STRING);
+if(!$order)
+{
+    $order = filter_input(INPUT_GET, 'order', FILTER_SANITIZE_STRING);
 }
 
 switch ($action)
 {
+    case "list_make":
+        echo '<script>alert("Hitting list_make.")</script>';
+        $vehicles = get_vehicles_by_make($make_id, $order);
+        $makes = get_makes();
+        $types = get_types();
+        $classes = get_classes();
+        include('view/vehicle_list.php');
+        break;
+    case "list_type":
+        echo '<script>alert("Hitting list_type.")</script>';
+        $vehicles = get_vehicles_by_type($type_id, $order);
+        $makes = get_makes();
+        $types = get_types();
+        $classes = get_classes();
+        include('view/vehicle_list.php');
+        break;
+    case "list_class":
+        echo '<script>alert("Hitting list_class.")</script>';
+        $vehicles = get_vehicles_by_class($class_id, $order);
+        $makes = get_makes();
+        $types = get_types();
+        $classes = get_classes();
+        include('view/vehicle_list.php');
+        break;
     case "list_all":
-        $vehicle_Make = get_vehicles_by_make($make_id, $type_id, $class_id);
-        $vehicles = get_makes();
-        $vehicles = get_vehicles_by_make($make_id);
+        echo '<script>alert("Hitting list_all.")</script>';
+        $vehicles = get_vehicles_by_class($class_id, $order);
+        $makes = get_makes();
+        $types = get_types();
+        $classes = get_classes();
         include('view/vehicle_list.php');
         break;
     default:
-        $vehicle_Make = get_make_by_name($make_id);
+        $vehicles = get_vehicles_by_class($class_id, $order);
         $makes = get_makes();
-        $vehicles = get_vehicles_by_make($make_id);
+        $types = get_types();
+        $classes = get_classes();
         include('view/vehicle_list.php');
         break;
-
 }
     
 

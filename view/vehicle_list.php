@@ -23,6 +23,7 @@
                 </option> 
                 <?php endforeach; ?>
         </select>
+        <button class="narrow-button bold">Search</button>
     </form>
     <br>
     <form action="." method="get" id="select_type" class="select_type">
@@ -39,6 +40,7 @@
                 </option> 
                 <?php endforeach; ?>
         </select>
+        <button class="narrow-button bold">Search</button>
     </form>
     <br>
     <form action="." method="get" id="select_class" class="select_class">
@@ -55,8 +57,42 @@
                 </option> 
                 <?php endforeach; ?>
         </select>
+        <button class="narrow-button bold">Search</button>
     </form>
+    
+    <form action="." method="get" id="select_order" class="select_order">
+    <input type="radio" id="price" name="order" value="false">
+    <label for="price">Price</label>
+    <input type="radio" id="year" name="order" value="true">
+    <label for="year">Year</label>
+    <button class="order-button bold">Sort</button>
+    </form>
+    <hr>
 
+    <?php if($vehicles) { ?>
+        
+        <?php foreach ($vehicles as $vehicle) : ?>
+        <table class="list_row">
+            <tr>
+            <?= $vehicle['year'] ?>
+            <?= $vehicle['Make'] ?>
+            <?= $vehicle['model'] ?>
+            <?= $vehicle['Class'] ?>
+            <?= $vehicle['Type'] ?>
+            <?= '$'.number_format($vehicle['price']) ?>
+            </tr>
+        </table>
+        
+        <?php endforeach; ?>
+    <?php } else { ?>
+    <br>
+    <?php if ($make_id) { ?>
+    <p>No vehicles exist yet 1.</p>
+    <?php } else { ?>
+    <p>No vehicles exist yet 2.</p>
+    <?php } ?>
+    <br>
+    <?php } ?>
 
 
 <hr>
