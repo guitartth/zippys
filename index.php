@@ -1,38 +1,65 @@
-<?php require ('./model/database.php'); ?>
+<?php  
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+// INF653 VB Midterm Project
+// Author: Craig Freeburg
+// Date: 3/15/2021
 
-<h1>TESTING Connection</h1>
+require ('./model/database.php');
+require ('./model/vehicles_db.php');
+require ('./model/make_db.php');
+require ('./model/type_db.php');
+require ('./model/class_db.php');
 
-<?php 
+$userMake;
+$userType;
+$userClass;
 
-    $query = 'SELECT * from makes';
-    $statement = $db->prepare($query);
-    $statement->execute();
-    $results = $statement->fetchAll();
-    $statement->closeCursor();
+$make_id = filter_input(INPUT_POST, 'make_id', FILTER_VALIDATE_INT);
+if(!$make_id)
+{
+    $make_id = filter_input(INPUT_GET, 'make_id', FILTER_VALIDATE_INT);
+}
+
+$type_id = filter_input(INPUT_POST, 'type_id', FILTER_VALIDATE_INT);
+if(!$type_id)
+{
+    $type_id = filter_input(INPUT_GET, 'type_id', FILTER_VALIDATE_INT);
+}
+
+$class_id = filter_input(INPUT_POST, 'class_id', FILTER_VALIDATE_INT);
+if(!$class_id)
+{
+    $class_id = filter_input(INPUT_GET, 'class_id', FILTER_VALIDATE_INT);
+}
+
+
+
+$action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
+if(!$action)
+{
+    $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
+    if(!$action)
+    {
+        $action = 'list_all';
+    }
+}
+
+switch ($action)
+{
+    case "list_all":
+        $vehicle_Make = get_vehicles_by_make($make_id, $type_id, $class_id);
+        $vehicles = get_makes();
+        $vehicles = get_vehicles_by_make($make_id);
+        include('view/vehicle_list.php');
+        break;
+    default:
+        $vehicle_Make = get_make_by_name($make_id);
+        $makes = get_makes();
+        $vehicles = get_vehicles_by_make($make_id);
+        include('view/vehicle_list.php');
+        break;
+
+}
     
-    ?>
 
-<h2> Test </h2><br>
-                <section>
-                
-                <?php foreach ($results as $result) : ?>
-                
-                <tr>
-                    <td><?php echo $result['Make']; ?></td><br>
-                    <td><?php echo $result['make_id']; ?></td><br>
-                </tr>
-
-                <?php endforeach; ?>
-                </section>
-</body>
-</html>
+?>
