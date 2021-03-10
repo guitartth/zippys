@@ -70,30 +70,35 @@
     <hr>
 
     <?php if($vehicles) { ?>
-        
         <?php foreach ($vehicles as $vehicle) : ?>
-        <table class="list_row">
-            <tr>
-            <?= $vehicle['year'] ?>
-            <?= $vehicle['Make'] ?>
-            <?= $vehicle['model'] ?>
-            <?= $vehicle['Class'] ?>
-            <?= $vehicle['Type'] ?>
-            <?= '$'.number_format($vehicle['price']) ?>
-            </tr>
-        </table>
+        <div class="list_row">
+            <div class="list_vehicles">
+                <p><?= $vehicle['year'] ?></p>
+                <p><?= $vehicle['Make'] ?></p>
+                <p><?= $vehicle['model'] ?></p>
+                <p><?= $vehicle['Class'] ?></p>
+                <p><?= $vehicle['Type'] ?></p>
+                <p><?= '$'.number_format($vehicle['price']) ?></p> 
+                <form action="." method="post">
+                    <input type="hidden" name="action" value="delete_vehicle">
+                    <input type="hidden" name="vehicle_id" value="<?=
+                    $vehicle['vehicle_id'] ?>">
+                    <button class="delete_button">❌</button>
+                </form>
+            </div>
+        </div>
         
         <?php endforeach; ?>
     <?php } else { ?>
     <br>
     <?php if ($make_id) { ?>
-    <p>No vehicles exist yet 1.</p>
+    <p>No tasks exist for this category yet.</p>
     <?php } else { ?>
-    <p>No vehicles exist yet 2.</p>
+    <p>No tasks exist yet.</p>
     <?php } ?>
     <br>
     <?php } ?>
 
 
 <hr>
-<?php include('../../view/footer.php'); ?>
+<?php include('../view/footer.php'); ?>

@@ -9,7 +9,7 @@ function get_vehicles_by_make($make_id, $order)
     global $db;
     if($order)
     {
-        $query = 'SELECT v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
+        $query = 'SELECT v.vehicle_id, v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
         LEFT JOIN makes m ON v.make_id = m.make_id
         LEFT JOIN classes c ON v.class_id = c.class_id
         LEFT JOIN types t ON v.type_id = t.type_id
@@ -28,7 +28,7 @@ function get_vehicles_by_make($make_id, $order)
     }
     else
     {
-        $query = 'SELECT v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
+        $query = 'SELECT v.vehicle_id, v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
         LEFT JOIN makes m ON v.make_id = m.make_id
         LEFT JOIN classes c ON v.class_id = c.class_id
         LEFT JOIN types t ON v.type_id = t.type_id
@@ -55,7 +55,7 @@ function get_vehicles_by_type($type_id, $order)
         if($order)
         {
             $query =
-            'SELECT v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
+            'SELECT v.vehicle_id, v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
             LEFT JOIN makes m ON v.make_id = m.make_id
             LEFT JOIN classes c ON v.class_id = c.class_id
             LEFT JOIN types t ON v.type_id = t.type_id
@@ -73,7 +73,7 @@ function get_vehicles_by_type($type_id, $order)
         }
         else
         {
-            $query = 'SELECT v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
+            $query = 'SELECT v.vehicle_id, v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
             LEFT JOIN makes m ON v.make_id = m.make_id
             LEFT JOIN classes c ON v.class_id = c.class_id
             LEFT JOIN types t ON v.type_id = t.type_id
@@ -101,7 +101,7 @@ function get_vehicles_by_class($class_id, $order)
         if($order)
         {
             $query =
-            'SELECT v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
+            'SELECT v.vehicle_id, v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
             LEFT JOIN makes m ON v.make_id = m.make_id
             LEFT JOIN classes c ON v.class_id = c.class_id
             LEFT JOIN types t ON v.type_id = t.type_id
@@ -120,7 +120,7 @@ function get_vehicles_by_class($class_id, $order)
         else
         {
             $query =
-            'SELECT v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
+            'SELECT v.vehicle_id, v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
             LEFT JOIN makes m ON v.make_id = m.make_id
             LEFT JOIN classes c ON v.class_id = c.class_id
             LEFT JOIN types t ON v.type_id = t.type_id
@@ -142,7 +142,7 @@ function get_vehicles_by_class($class_id, $order)
     {
         if($order)
         {
-            $query = 'SELECT v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
+            $query = 'SELECT v.vehicle_id, v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
             LEFT JOIN makes m ON v.make_id = m.make_id
             LEFT JOIN classes c ON v.class_id = c.class_id
             LEFT JOIN types t ON v.type_id = t.type_id
@@ -156,7 +156,7 @@ function get_vehicles_by_class($class_id, $order)
         }
         else
         {
-            $query = 'SELECT v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
+            $query = 'SELECT v.vehicle_id, v.year, m.Make, v.model, t.Type, c.Class, v.price FROM vehicles v 
             LEFT JOIN makes m ON v.make_id = m.make_id
             LEFT JOIN classes c ON v.class_id = c.class_id
             LEFT JOIN types t ON v.type_id = t.type_id
@@ -175,7 +175,7 @@ function delete_vehicle($vehicle_id)
 {
     global $db;
     $query = 'DELETE FROM vehicles
-              WHERE vehicleId = :vehicle_id';
+              WHERE vehicle_id = :vehicle_id';
     $statement = $db->prepare($query);
     $statement->bindValue(':vehicle_id', $vehicle_id);
     $statement->execute();

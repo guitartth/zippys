@@ -4,11 +4,11 @@
 // Author: Craig Freeburg
 // Date: 3/15/2021
 
-require ('../../model/database.php');
-require ('../../model/vehicles_db.php');
-require ('../../model/make_db.php');
-require ('../../model/type_db.php');
-require ('../../model/class_db.php');
+require ('../model/database.php');
+require ('../model/vehicles_db.php');
+require ('../model/make_db.php');
+require ('../model/type_db.php');
+require ('../model/class_db.php');
 
 $userMake;
 $userType;
@@ -31,6 +31,9 @@ if(!$class_id)
 {
     $class_id = filter_input(INPUT_GET, 'class_id', FILTER_VALIDATE_INT);
 }
+
+$vehicle_id = filter_input(INPUT_POST, 'vehicle_id', FILTER_VALIDATE_INT);
+
 
 
 
@@ -59,7 +62,7 @@ switch ($action)
         $makes = get_makes();
         $types = get_types();
         $classes = get_classes();
-        include('view/vehicle_list.php');
+        include('./view/vehicle_list.php');
         break;
     case "list_type":
         echo '<script>alert("Hitting list_type.")</script>';
@@ -67,7 +70,7 @@ switch ($action)
         $makes = get_makes();
         $types = get_types();
         $classes = get_classes();
-        include('view/vehicle_list.php');
+        include('./view/vehicle_list.php');
         break;
     case "list_class":
         echo '<script>alert("Hitting list_class.")</script>';
@@ -75,7 +78,7 @@ switch ($action)
         $makes = get_makes();
         $types = get_types();
         $classes = get_classes();
-        include('view/vehicle_list.php');
+        include('./view/vehicle_list.php');
         break;
     case "list_all":
         echo '<script>alert("Hitting list_all.")</script>';
@@ -83,14 +86,35 @@ switch ($action)
         $makes = get_makes();
         $types = get_types();
         $classes = get_classes();
-        include('view/vehicle_list.php');
+        include('./view/vehicle_list.php');
+        break;
+    case "delete_vehicle":
+        echo '<script>alert("Hitting delete_vehicle.")</script>';
+        if($vehicle_id)
+        {
+            echo '<script>alert("Hitting IF $vehicle_id.")</script>';
+            try
+            {
+                echo '<script>alert("Hitting try.")</script>';
+                delete_vehicle($vehicle_id);
+            }
+            catch (PDOException $e)
+            {
+                $error = "Cannot delete vehicle without specificing vehicle first.";
+                include('/view/error.php');
+            }
+            echo '<script>alert("Hitting header.")</script>';
+            header("Location: .?");
+        }
+        echo '<script>alert("hitting after try.")</script>';
         break;
     default:
+    echo '<script>alert("Hitting default.")</script>';
         $vehicles = get_vehicles_by_class($class_id, $order);
         $makes = get_makes();
         $types = get_types();
         $classes = get_classes();
-        include('view/vehicle_list.php');
+        include('./view/vehicle_list.php');
         break;
 }
     
