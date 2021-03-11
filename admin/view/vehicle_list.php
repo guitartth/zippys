@@ -120,5 +120,12 @@
     </form>
     
     </section>
+    <section id="addVehicles" class="addVehicles">
+    <form action="." method="post">
+        <input type="hidden" name="action" value="add_vehicle_page">
+        <button class="modify-button bold">Add Vehicles</button>
+    </form>
+    
+    </section>
 <hr>
 <?php include('../view/footer.php'); ?>

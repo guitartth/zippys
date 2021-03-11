@@ -52,8 +52,11 @@ if(!$class_name)
 
 $vehicle_id = filter_input(INPUT_POST, 'vehicle_id', FILTER_VALIDATE_INT);
 
+$price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_INT);
 
+$year = filter_input(INPUT_POST, 'year', FILTER_VALIDATE_INT);
 
+$model = filter_input(INPUT_POST, 'model', FILTER_SANITIZE_STRING);
 
 $action = filter_input(INPUT_POST, 'action', FILTER_SANITIZE_STRING);
 if(!$action)
@@ -75,7 +78,6 @@ if(!$order)
 switch ($action)
 {
     case "list_make":
-        echo '<script>alert("Hitting list_make.")</script>';
         $vehicles = get_vehicles_by_make($make_id, $order);
         $makes = get_makes();
         $types = get_types();
@@ -83,7 +85,6 @@ switch ($action)
         include('./view/vehicle_list.php');
         break;
     case "list_type":
-        echo '<script>alert("Hitting list_type.")</script>';
         $vehicles = get_vehicles_by_type($type_id, $order);
         $makes = get_makes();
         $types = get_types();
@@ -91,7 +92,6 @@ switch ($action)
         include('./view/vehicle_list.php');
         break;
     case "list_class":
-        echo '<script>alert("Hitting list_class.")</script>';
         $vehicles = get_vehicles_by_class($class_id, $order);
         $makes = get_makes();
         $types = get_types();
@@ -99,7 +99,6 @@ switch ($action)
         include('./view/vehicle_list.php');
         break;
     case "list_all":
-        echo '<script>alert("Hitting list_all.")</script>';
         $vehicles = get_vehicles_by_class($class_id, $order);
         $makes = get_makes();
         $types = get_types();
@@ -107,13 +106,10 @@ switch ($action)
         include('./view/vehicle_list.php');
         break;
     case "delete_vehicle":
-        echo '<script>alert("Hitting delete_vehicle.")</script>';
         if($vehicle_id)
         {
-            echo '<script>alert("Hitting IF $vehicle_id.")</script>';
             try
             {
-                echo '<script>alert("Hitting try.")</script>';
                 delete_vehicle($vehicle_id);
             }
             catch (PDOException $e)
@@ -121,10 +117,8 @@ switch ($action)
                 $error = "Cannot delete vehicle without specificing vehicle first.";
                 include('/view/error.php');
             }
-            echo '<script>alert("Hitting header.")</script>';
             header("Location: .?");
         }
-        echo '<script>alert("hitting after try.")</script>';
         break;
     case "manage_makes":
         $makes = get_makes();
@@ -197,6 +191,25 @@ switch ($action)
             }
         }
         header("Location: .?action=manage_classes");
+        break;
+    case "add_vehicle":
+        if($year && $price && $type_id && $class_id && $make_id && $model)
+        {
+            add_vehicle($year, $price, $type_id, $class_id, $make_id, $model);
+        }
+        else
+        {
+            $error = "Invalid or missing vehicle information. Check all fields and try again.";
+            include('./view/error.php');
+            exit();
+        }
+        header("Location: .?action=default");
+        break;
+    case "add_vehicle_page":
+        $makes = get_makes();
+        $types = get_types();
+        $classes = get_classes();
+        include('./view/add_car.php');
         break;
     default:
         $vehicles = get_vehicles_by_class($class_id, $order);
