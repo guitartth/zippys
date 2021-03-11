@@ -20,16 +20,34 @@ if(!$make_id)
     $make_id = filter_input(INPUT_GET, 'make_id', FILTER_VALIDATE_INT);
 }
 
+$make_name = filter_input(INPUT_POST, 'make_name', FILTER_SANITIZE_STRING);
+if(!$make_name)
+{
+    $make_name = filter_input(INPUT_GET, 'make_name', FILTER_SANITIZE_STRING);
+}
+
 $type_id = filter_input(INPUT_POST, 'type_id', FILTER_VALIDATE_INT);
 if(!$type_id)
 {
     $type_id = filter_input(INPUT_GET, 'type_id', FILTER_VALIDATE_INT);
 }
 
+$type_name = filter_input(INPUT_POST, 'type_name', FILTER_SANITIZE_STRING);
+if(!$type_name)
+{
+    $type_name = filter_input(INPUT_GET, 'type_name', FILTER_SANITIZE_STRING);
+}
+
 $class_id = filter_input(INPUT_POST, 'class_id', FILTER_VALIDATE_INT);
 if(!$class_id)
 {
     $class_id = filter_input(INPUT_GET, 'class_id', FILTER_VALIDATE_INT);
+}
+
+$class_name = filter_input(INPUT_POST, 'class_name', FILTER_SANITIZE_STRING);
+if(!$class_name)
+{
+    $class_name = filter_input(INPUT_GET, 'class_name', FILTER_SANITIZE_STRING);
 }
 
 $vehicle_id = filter_input(INPUT_POST, 'vehicle_id', FILTER_VALIDATE_INT);
@@ -108,8 +126,79 @@ switch ($action)
         }
         echo '<script>alert("hitting after try.")</script>';
         break;
+    case "manage_makes":
+        $makes = get_makes();
+        include('./view/make_list.php');
+        break;
+    case "add_make":
+        add_make($make_name);
+        header("Location: .?action=manage_makes");
+        break;
+    case "delete_make":
+        if($make_id)
+        {
+            try
+            {
+                delete_make($make_id);
+            }
+            catch (PDOException $e)
+            {
+                $error = "Cannot delete Make with vehicles of this make still in inventory.";
+                include('./view/error.php');
+                exit();
+            }
+        }
+        header("Location: .?action=manage_makes");
+        break;
+    case "manage_types":
+        $types = get_types();
+        include('./view/type_list.php');
+        break;
+    case "add_type":
+        add_type($type_name);
+        header("Location: .?action=manage_types");
+        break;
+    case "delete_type":
+        if ($type_id) 
+        {
+            try 
+            {
+                delete_type($type_id);
+            } 
+            catch (PDOException $e) 
+            {
+                $error = "Cannot delete Type with vehicles of this type still in inventory.";
+                include('./view/error.php');
+                exit();
+            }
+        }
+        header("Location: .?action=manage_types");
+        break;
+    case "manage_classes":
+        $classes = get_classes();
+        include('./view/class_list.php');
+        break;
+    case "add_class":
+        add_class($class_name);
+        header("Location: .?action=manage_classes");
+        break;
+    case "delete_class":
+        if ($class_id) 
+        {
+            try 
+            {
+                delete_class($class_id);
+            } 
+            catch (PDOException $e) 
+            {
+                $error = "Cannot delete Class with vehicles of this class still in inventory.";
+                include('./view/error.php');
+                exit();
+            }
+        }
+        header("Location: .?action=manage_classes");
+        break;
     default:
-    echo '<script>alert("Hitting default.")</script>';
         $vehicles = get_vehicles_by_class($class_id, $order);
         $makes = get_makes();
         $types = get_types();

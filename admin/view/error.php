@@ -2,4 +2,4 @@
 <?php echo $error; ?>
 <br>
 <p><a href=".">Back Home</a>
-<?php include('../../view/footer.php');?>
+<?php include('../view/footer.php'); ?>

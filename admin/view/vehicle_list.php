@@ -99,6 +99,26 @@
     <br>
     <?php } ?>
 
-
+    <section id="manageMakes" class="manageMakes">
+    <form action="." method="post">
+        <input type="hidden" name="action" value="manage_makes">
+        <button class="modify-button bold">Manage Makes</button>
+    </form>
+    
+    </section>
+    <section id="manageClasses" class="manageClasses">
+    <form action="." method="post">
+        <input type="hidden" name="action" value="manage_classes">
+        <button class="modify-button bold">Manage Classes</button>
+    </form>
+    
+    </section>
+    <section id="manageTypes" class="manageTypes">
+    <form action="." method="post">
+        <input type="hidden" name="action" value="manage_types">
+        <button class="modify-button bold">Manage Types</button>
+    </form>
+    
+    </section>
 <hr>
 <?php include('../view/footer.php'); ?>
