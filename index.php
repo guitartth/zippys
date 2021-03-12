@@ -53,38 +53,44 @@ if(!$order)
 
 switch ($action)
 {
-    case "list_make":
-        echo '<script>alert("Hitting list_make.")</script>';
-        $vehicles = get_vehicles_by_make($make_id, $order);
-        $makes = get_makes();
-        $types = get_types();
-        $classes = get_classes();
-        include('view/vehicle_list.php');
-        break;
-    case "list_type":
-        echo '<script>alert("Hitting list_type.")</script>';
-        $vehicles = get_vehicles_by_type($type_id, $order);
-        $makes = get_makes();
-        $types = get_types();
-        $classes = get_classes();
-        include('view/vehicle_list.php');
-        break;
-    case "list_class":
-        echo '<script>alert("Hitting list_class.")</script>';
-        $vehicles = get_vehicles_by_class($class_id, $order);
-        $makes = get_makes();
-        $types = get_types();
-        $classes = get_classes();
-        include('view/vehicle_list.php');
-        break;
-    case "list_all":
-        echo '<script>alert("Hitting list_all.")</script>';
-        $vehicles = get_vehicles_by_class($class_id, $order);
-        $makes = get_makes();
-        $types = get_types();
-        $classes = get_classes();
-        include('view/vehicle_list.php');
-        break;
+    case "search_vehicles":
+        
+        if($make_id)
+        {
+            $vehicles = get_vehicles_by_make($make_id, $order);
+            $makes = get_makes();
+            $types = get_types();
+            $classes = get_classes();
+            include('view/vehicle_list.php');
+            break;
+        }
+        else if(!$make_id && $type_id)
+        {
+            $vehicles = get_vehicles_by_type($type_id, $order);
+            $makes = get_makes();
+            $types = get_types();
+            $classes = get_classes();
+            include('view/vehicle_list.php');
+            break;
+        }
+        else if(!$make_id && !$type_id && $class_id)
+        {
+            $vehicles = get_vehicles_by_class($class_id, $order);
+            $makes = get_makes();
+            $types = get_types();
+            $classes = get_classes();
+            include('view/vehicle_list.php');
+            break;
+        }
+        else
+        {
+            $vehicles = get_vehicles_by_class($class_id, $order);
+            $makes = get_makes();
+            $types = get_types();
+            $classes = get_classes();
+            include('view/vehicle_list.php');
+            break;
+        }
     default:
         $vehicles = get_vehicles_by_class($class_id, $order);
         $makes = get_makes();

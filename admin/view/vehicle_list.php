@@ -7,10 +7,10 @@
 
 <?php include('admin_header.php'); ?>
 <section id="userSelect" class="userSelect">
-    <h3>Narrow Results:</h3>
+<h3>Narrow Results:</h3>
     
     <form action="." method="get" id="select_make" class="select_make">
-        <input type="hidden" name="action" value="list_make">
+        <input type="hidden" name="action" value="search_vehicles">
         <select name="make_id">
             <option value="0">Select Vehicle Make</option>
             <?php foreach ($makes as $make) : ?>
@@ -23,11 +23,10 @@
                 </option> 
                 <?php endforeach; ?>
         </select>
-        <button class="narrow-button bold">Search</button>
-    </form>
+        
+    
     <br>
-    <form action="." method="get" id="select_type" class="select_type">
-        <input type="hidden" name="action" value="list_type">
+    
         <select name="type_id">
             <option value="0">Select Vehicle Type</option>
             <?php foreach ($types as $type) : ?>
@@ -40,11 +39,10 @@
                 </option> 
                 <?php endforeach; ?>
         </select>
-        <button class="narrow-button bold">Search</button>
-    </form>
+        
+    
     <br>
-    <form action="." method="get" id="select_class" class="select_class">
-        <input type="hidden" name="action" value="list_class">
+    
         <select name="class_id">
             <option value="0">Select Vehicle Class</option>
             <?php foreach ($classes as $class) : ?>
@@ -57,15 +55,15 @@
                 </option> 
                 <?php endforeach; ?>
         </select>
+        <br>
+        <input type="radio" id="price" name="order" value="price">
+        <label for="price">Price</label>
+        <input type="radio" id="year" name="order" value="year">
+        <label for="year">Year</label>
+
+
+
         <button class="narrow-button bold">Search</button>
-    </form>
-    
-    <form action="." method="get" id="select_order" class="select_order">
-    <input type="radio" id="price" name="order" value="false">
-    <label for="price">Price</label>
-    <input type="radio" id="year" name="order" value="true">
-    <label for="year">Year</label>
-    <button class="order-button bold">Sort</button>
     </form>
     <hr>
 
@@ -73,12 +71,12 @@
         <?php foreach ($vehicles as $vehicle) : ?>
         <div class="list_row">
             <div class="list_vehicles">
-                <p><?= $vehicle['year'] ?></p>
-                <p><?= $vehicle['Make'] ?></p>
-                <p><?= $vehicle['model'] ?></p>
-                <p><?= $vehicle['Class'] ?></p>
-                <p><?= $vehicle['Type'] ?></p>
-                <p><?= '$'.number_format($vehicle['price']) ?></p> 
+                <?= $vehicle['year'] ?>
+                <?= $vehicle['Make'] ?>
+                <?= $vehicle['model'] ?>
+                <?= $vehicle['Class'] ?>
+                <?= $vehicle['Type'] ?>
+                <?= '$'.number_format($vehicle['price']) ?>
                 <form action="." method="post">
                     <input type="hidden" name="action" value="delete_vehicle">
                     <input type="hidden" name="vehicle_id" value="<?=

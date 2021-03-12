@@ -77,34 +77,44 @@ if(!$order)
 
 switch ($action)
 {
-    case "list_make":
-        $vehicles = get_vehicles_by_make($make_id, $order);
-        $makes = get_makes();
-        $types = get_types();
-        $classes = get_classes();
-        include('./view/vehicle_list.php');
-        break;
-    case "list_type":
-        $vehicles = get_vehicles_by_type($type_id, $order);
-        $makes = get_makes();
-        $types = get_types();
-        $classes = get_classes();
-        include('./view/vehicle_list.php');
-        break;
-    case "list_class":
-        $vehicles = get_vehicles_by_class($class_id, $order);
-        $makes = get_makes();
-        $types = get_types();
-        $classes = get_classes();
-        include('./view/vehicle_list.php');
-        break;
-    case "list_all":
-        $vehicles = get_vehicles_by_class($class_id, $order);
-        $makes = get_makes();
-        $types = get_types();
-        $classes = get_classes();
-        include('./view/vehicle_list.php');
-        break;
+    case "search_vehicles":
+        
+        if($make_id)
+        {
+            $vehicles = get_vehicles_by_make($make_id, $order);
+            $makes = get_makes();
+            $types = get_types();
+            $classes = get_classes();
+            include('view/vehicle_list.php');
+            break;
+        }
+        else if(!$make_id && $type_id)
+        {
+            $vehicles = get_vehicles_by_type($type_id, $order);
+            $makes = get_makes();
+            $types = get_types();
+            $classes = get_classes();
+            include('view/vehicle_list.php');
+            break;
+        }
+        else if(!$make_id && !$type_id && $class_id)
+        {
+            $vehicles = get_vehicles_by_class($class_id, $order);
+            $makes = get_makes();
+            $types = get_types();
+            $classes = get_classes();
+            include('view/vehicle_list.php');
+            break;
+        }
+        else
+        {
+            $vehicles = get_vehicles_by_class($class_id, $order);
+            $makes = get_makes();
+            $types = get_types();
+            $classes = get_classes();
+            include('view/vehicle_list.php');
+            break;
+        }
     case "delete_vehicle":
         if($vehicle_id)
         {
