@@ -1,6 +1,6 @@
 <?php
     //HEROKU DATABASE CONNECTION
-    /*
+    
     $username = 'owzs8em1up7zunda';
     $password = 'p6hsseoock6gyigv';
 
@@ -12,9 +12,10 @@
         echo $error_message;
         exit();
     }
-    */
-    //LOCAL CONNECTION TESTING DATABASE SETUP
     
+
+    //LOCAL CONNECTION TESTING DATABASE SETUP
+    /*
     $dsn = 'mysql:host=localhost;dbname=zippyusedautos';
     $username = 'root';
     
@@ -25,5 +26,5 @@
         include('./view/error.php');
         exit();
     }
-    
+    */
 ?>
