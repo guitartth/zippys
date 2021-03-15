@@ -132,7 +132,7 @@ switch ($action)
         break;
     case "manage_makes":
         $makes = get_makes();
-        include('/view/make_list.php');
+        include('view/make_list.php');
         break;
     case "add_make":
         add_make($make_name);
@@ -155,9 +155,8 @@ switch ($action)
         header("Location: .?action=manage_makes");
         break;
     case "manage_types":
-        echo '<script>alert("'.$action.'")</script>';
         $types = get_types();
-        include('/view/type_list.php');
+        include('view/type_list.php');
         break;
     case "add_type":
         add_type($type_name);
@@ -181,7 +180,7 @@ switch ($action)
         break;
     case "manage_classes":
         $classes = get_classes();
-        include('/view/class_list.php');
+        include('view/class_list.php');
         break;
     case "add_class":
         add_class($class_name);
@@ -211,7 +210,7 @@ switch ($action)
         else
         {
             $error = "Invalid or missing vehicle information. Check all fields and try again.";
-            include('./view/error.php');
+            include('view/error.php');
             exit();
         }
         header("Location: .?action=default");
@@ -227,7 +226,7 @@ switch ($action)
         $makes = get_makes();
         $types = get_types();
         $classes = get_classes();
-        include('./view/vehicle_list.php');
+        include('view/vehicle_list.php');
         break;
 }
     

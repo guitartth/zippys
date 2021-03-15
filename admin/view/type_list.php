@@ -3,7 +3,6 @@
 // INF653 VB Midterm Project
 // Author: Craig Freeburg
 // Date: 3/15/2021
-echo '<script>alert("On type_list")</script>';
 ?>
 
 <?php include('admin_header.php'); ?>

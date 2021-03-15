@@ -2,6 +2,7 @@
     /* browser styling */
     html {
         width: 100%;
+        text-align: center;
     }
 
     .copyright{
@@ -48,6 +49,10 @@
 
     h3 {
         margin-bottom: 1px;
+    }
+
+    #add__inputs {
+        text-align: center;
     }
 }
 
@@ -147,6 +152,10 @@
         margin-bottom: 1px;
     }
     
+    #list {
+        text-align: center;
+        
+    }
 }
 
 
