@@ -3,9 +3,11 @@
 // INF653 VB Midterm Project
 // Author: Craig Freeburg
 // Date: 3/15/2021
+echo '<script>alert("On type_list")</script>';
 ?>
 
 <?php include('admin_header.php'); ?>
+
 <?php if($types) { ?>
 <section id="list" class="list"?
     <header class="list__row list__header">
@@ -27,9 +29,9 @@
     </div>
     <?php endforeach ?>
 </section>
-<? php } else { ?>
+<? } ?>
 
-<?php } ?>
+
 
 <section id="add" class="add">
     <h3>Add Type</h3>
