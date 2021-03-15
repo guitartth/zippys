@@ -6,6 +6,7 @@
 
 function get_vehicles_by_make($make_id, $order)
 {
+    //echo '<script>alert("'.$make_id.$order.'")</script>';
     global $db;
     if($order == "year")
     {

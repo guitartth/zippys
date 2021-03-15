@@ -1,0 +1,62 @@
+@media only screen and (min-width: 1080){
+    /* brwoser styling */
+    html {
+        background-color: green;
+    }
+
+    .copyright{
+        text-align: right;
+    }
+
+    h1 {
+        text-align: left;
+        font-size: 60px;
+    }
+}
+
+@media only screen and (min-width: 416) and (max-width: 1079){
+    /* tablet styling */
+    html {
+        background-color: red;
+    }
+
+    .copyright{
+        text-align: right;
+    }
+
+    h1 {
+        text-align: left;
+        font-size: 45px;
+    }
+}
+
+@media only screen and (max-width: 415){
+    /* mobile styling */ 
+    body {
+        background-color: blue;
+    }
+
+    .copyright{
+        text-align: center;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 25px;
+    }
+
+    #selectMake, #selectType, #selectClass {
+        background-color: lightslategray;
+    }
+
+    #vehicleList {
+        text-align: center;
+        align-items: space-between;
+    }
+}
+
+
+
+
+
+

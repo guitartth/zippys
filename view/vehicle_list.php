@@ -10,6 +10,7 @@
     <h3>Narrow Results:</h3>
     
     <form action="." method="get" id="select_make" class="select_make">
+        <div id="selectMake">
         <input type="hidden" name="action" value="search_vehicles">
         <select name="make_id">
             <option value="0">Select Vehicle Make</option>
@@ -23,10 +24,10 @@
                 </option> 
                 <?php endforeach; ?>
         </select>
-        
+        </div>
     
     <br>
-    
+        <div id="selectType">
         <select name="type_id">
             <option value="0">Select Vehicle Type</option>
             <?php foreach ($types as $type) : ?>
@@ -39,10 +40,10 @@
                 </option> 
                 <?php endforeach; ?>
         </select>
-        
+        </div>
     
     <br>
-    
+        <div id="selectClass">
         <select name="class_id">
             <option value="0">Select Vehicle Class</option>
             <?php foreach ($classes as $class) : ?>
@@ -55,6 +56,7 @@
                 </option> 
                 <?php endforeach; ?>
         </select>
+        </div>
         <br>
         <input type="radio" id="price" name="order" value="price">
         <label for="price">Price</label>
@@ -68,17 +70,17 @@
     
     
     <hr>
-
+    <div id="vehicleList">
     <?php if($vehicles) { ?>
         
         <?php foreach ($vehicles as $vehicle) : ?>
         <table class="list_row">
             <tr>
-            <?= $vehicle['year'] ?>
-            <?= $vehicle['Make'] ?>
-            <?= $vehicle['model'] ?>
-            <?= $vehicle['Class'] ?>
-            <?= $vehicle['Type'] ?>
+            <?= $vehicle['year']?>
+            <?= $vehicle['Make']?>
+            <?= $vehicle['model']?>
+            <?= $vehicle['Class']?>
+            <?= $vehicle['Type']?>
             <?= '$'.number_format($vehicle['price']) ?>
             </tr>
         </table>
@@ -93,7 +95,7 @@
     <?php } ?>
     <br>
     <?php } ?>
-
+    </div>
 
 <hr>
 <?php include('footer.php'); ?>

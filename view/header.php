@@ -3,8 +3,8 @@
 <!--Head Section-->
 <head>
     <title>Zippy's Used Autos</title>
-    <link rel="stylesheet" type="text/css"
-        href="./view/css/main.css">
+    <link rel="stylesheet" type="text/css" href="./view/css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <!--Body Secion--> 
