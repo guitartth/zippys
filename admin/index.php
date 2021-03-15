@@ -155,6 +155,7 @@ switch ($action)
         header("Location: .?action=manage_makes");
         break;
     case "manage_types":
+        echo '<script>alert("'.$action.'")</script>';
         $types = get_types();
         include('/view/type_list.php');
         break;
