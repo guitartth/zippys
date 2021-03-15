@@ -29,7 +29,7 @@ echo '<script>alert("On type_list")</script>';
     </div>
     <?php endforeach ?>
 </section>
-<? } ?>
+<?php } ?>
 
 
 

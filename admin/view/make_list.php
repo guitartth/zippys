@@ -27,8 +27,6 @@
     </div>
     <?php endforeach ?>
 </section>
-<? php } else { ?>
-
 <?php } ?>
 
 <section id="add" class="add">
