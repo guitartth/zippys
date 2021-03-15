@@ -11,7 +11,7 @@
     
     <form action="." method="get" id="select_make" class="select_make">
         <input type="hidden" name="action" value="search_vehicles">
-        <select name="make_id">
+        <select name="make_id" id="make_drop">
             <option value="0">Select Vehicle Make</option>
             <?php foreach ($makes as $make) : ?>
             <?php if ($make_id == $make['make_id']) { ?>
@@ -27,7 +27,7 @@
     
     <br>
     
-        <select name="type_id">
+        <select name="type_id" id="type_drop">
             <option value="0">Select Vehicle Type</option>
             <?php foreach ($types as $type) : ?>
             <?php if ($type_id == $type['type_id']) { ?>
@@ -43,7 +43,7 @@
     
     <br>
     
-        <select name="class_id">
+        <select name="class_id" id="class_drop">
             <option value="0">Select Vehicle Class</option>
             <?php foreach ($classes as $class) : ?>
             <?php if ($class_id == $class['class_id']) { ?>
@@ -97,17 +97,18 @@
     <br>
     <?php } ?>
 
+    <section id="addVehicles" class="addVehicles">
+    <form action="." method="post">
+        <input type="hidden" name="action" value="add_vehicle_page">
+        <button class="modify-button bold">Add Vehicles</button>
+    </form>
+    
+    </section>
+
     <section id="manageMakes" class="manageMakes">
     <form action="." method="post">
         <input type="hidden" name="action" value="manage_makes">
         <button class="modify-button bold">Manage Makes</button>
-    </form>
-    
-    </section>
-    <section id="manageClasses" class="manageClasses">
-    <form action="." method="post">
-        <input type="hidden" name="action" value="manage_classes">
-        <button class="modify-button bold">Manage Classes</button>
     </form>
     
     </section>
@@ -118,12 +119,14 @@
     </form>
     
     </section>
-    <section id="addVehicles" class="addVehicles">
+    <section id="manageClasses" class="manageClasses">
     <form action="." method="post">
-        <input type="hidden" name="action" value="add_vehicle_page">
-        <button class="modify-button bold">Add Vehicles</button>
+        <input type="hidden" name="action" value="manage_classes">
+        <button class="modify-button bold">Manage Classes</button>
     </form>
     
     </section>
+    
+    
 <hr>
 <?php include('../view/footer.php'); ?>

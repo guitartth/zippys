@@ -10,9 +10,8 @@
     <h3>Narrow Results:</h3>
     
     <form action="." method="get" id="select_make" class="select_make">
-        <div id="selectMake">
         <input type="hidden" name="action" value="search_vehicles">
-        <select name="make_id">
+        <select name="make_id" id="make_drop">
             <option value="0">Select Vehicle Make</option>
             <?php foreach ($makes as $make) : ?>
             <?php if ($make_id == $make['make_id']) { ?>
@@ -24,11 +23,11 @@
                 </option> 
                 <?php endforeach; ?>
         </select>
-        </div>
+        
     
     <br>
-        <div id="selectType">
-        <select name="type_id">
+    
+        <select name="type_id" id="type_drop">
             <option value="0">Select Vehicle Type</option>
             <?php foreach ($types as $type) : ?>
             <?php if ($type_id == $type['type_id']) { ?>
@@ -40,11 +39,11 @@
                 </option> 
                 <?php endforeach; ?>
         </select>
-        </div>
+        
     
     <br>
-        <div id="selectClass">
-        <select name="class_id">
+    
+        <select name="class_id" id="class_drop">
             <option value="0">Select Vehicle Class</option>
             <?php foreach ($classes as $class) : ?>
             <?php if ($class_id == $class['class_id']) { ?>
@@ -56,7 +55,6 @@
                 </option> 
                 <?php endforeach; ?>
         </select>
-        </div>
         <br>
         <input type="radio" id="price" name="order" value="price">
         <label for="price">Price</label>
